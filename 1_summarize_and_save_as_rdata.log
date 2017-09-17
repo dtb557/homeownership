@@ -1,0 +1,76 @@
+
+R version 3.2.2 (2015-08-14) -- "Fire Safety"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> library(data.table)
+Warning message:
+package ‘data.table’ was built under R version 3.2.5 
+> 
+> d <- data.table(read.csv("usa_00006.csv"))
+> 
+> save(d, file="homeown_race_sex.Rdata")
+> 
+> # load("homeown_race_sex.Rdata")
+> 
+> summary(d)
+      YEAR         DATANUM          SERIAL              HHWT       
+ Min.   :1900   Min.   :1.000   Min.   :       1   Min.   :  0.00  
+ 1st Qu.:1930   1st Qu.:1.000   1st Qu.:  327662   1st Qu.: 19.54  
+ Median :1960   Median :1.000   Median :  773419   Median : 21.00  
+ Mean   :1956   Mean   :1.534   Mean   : 2303379   Mean   : 44.51  
+ 3rd Qu.:1990   3rd Qu.:2.000   3rd Qu.: 2735506   3rd Qu.: 95.05  
+ Max.   :1990   Max.   :3.000   Max.   :32365701   Max.   :330.00  
+                                                                   
+    STATEFIP        URBAN               GQ            FARM      
+ Min.   : 1.0   Min.   :0.0       Min.   :1.00   Min.   :0.000  
+ 1st Qu.:17.0   1st Qu.:1.0       1st Qu.:1.00   1st Qu.:1.000  
+ Median :30.0   Median :2.0       Median :1.00   Median :1.000  
+ Mean   :29.5   Mean   :1.6       Mean   :1.07   Mean   :1.146  
+ 3rd Qu.:42.0   3rd Qu.:2.0       3rd Qu.:1.00   3rd Qu.:1.000  
+ Max.   :97.0   Max.   :2.0       Max.   :6.00   Max.   :2.000  
+                NA's   :1922198                                 
+    OWNERSHP         OWNERSHPD          MORTGAGE           VALUEH       
+ Min.   :0.0       Min.   : 0.0      Min.   :0         Min.   :      0  
+ 1st Qu.:1.0       1st Qu.:10.0      1st Qu.:0         1st Qu.:   6250  
+ Median :1.0       Median :13.0      Median :0         Median :  62500  
+ Mean   :1.4       Mean   :14.7      Mean   :1         Mean   :2964191  
+ 3rd Qu.:2.0       3rd Qu.:20.0      3rd Qu.:3         3rd Qu.:9999999  
+ Max.   :2.0       Max.   :22.0      Max.   :4         Max.   :9999999  
+ NA's   :1922198   NA's   :1922198   NA's   :7104204   NA's   :8329153  
+     PERNUM           PERWT             SEX             RACE      
+ Min.   : 1.000   Min.   :  0.00   Min.   :1.000   Min.   :1.000  
+ 1st Qu.: 1.000   1st Qu.: 19.61   1st Qu.:1.000   1st Qu.:1.000  
+ Median : 2.000   Median : 21.00   Median :2.000   Median :1.000  
+ Mean   : 2.713   Mean   : 44.70   Mean   :1.504   Mean   :1.265  
+ 3rd Qu.: 4.000   3rd Qu.: 95.16   3rd Qu.:2.000   3rd Qu.:1.000  
+ Max.   :30.000   Max.   :345.00   Max.   :2.000   Max.   :7.000  
+                                                                  
+     RACED      
+ Min.   :100.0  
+ 1st Qu.:100.0  
+ Median :100.0  
+ Mean   :126.9  
+ 3rd Qu.:100.0  
+ Max.   :700.0  
+                
+> 
+> proc.time()
+   user  system elapsed 
+254.259  10.110 264.456 

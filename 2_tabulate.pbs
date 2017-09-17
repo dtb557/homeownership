@@ -1,0 +1,15 @@
+#!/bin/bash
+#PBS -N tabulate
+#PBS -q A
+#PBS -j oe
+#PBS -m ae
+#PBS -M DerekBurk2015@u.northwestern.edu
+#PBS -l walltime=168:00:00
+#PBS -l select=1:mem=8gb:ncpus=1
+
+# Created for the SSCC by Submit: Thu Jul 20 15:59:01 CDT 2017
+
+cd /sscc/home/d/dtb557/Dylan_Penningroth/homeownership
+R CMD BATCH tabulate.R tabulate.log
+
+exit

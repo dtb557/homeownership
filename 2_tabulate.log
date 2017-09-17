@@ -1,0 +1,56 @@
+
+R version 3.2.2 (2015-08-14) -- "Fire Safety"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> library(data.table)
+Warning message:
+package ‘data.table’ was built under R version 3.2.5 
+> 
+> load("homeown_race_sex.Rdata")
+> 
+> d[ , URBAN := factor(URBAN, levels=c(1,2), 
++     labels=c("Rural", "Urban"))]
+> d[ , FARM := factor(FARM, levels=c(1,2), 
++     labels=c("Non-Farm", "Farm"))]
+> d[ , OWNERSHP := factor(OWNERSHP, levels=c(1,2), 
++     labels=c("Owned or being bought (loan)", 
++              "Rented"))]
+> d[ , FREE_AND_CLEAR := MORTGAGE == 1]
+> d[ , SEX := factor(SEX, levels=c(1,2), 
++     labels=c("Male", "Female"))]
+> d[ ,  RACE := factor(RACE, levels=1:9, 
++     labels=c("White", "Black/Negro", 
++              "American Indian or Alaska Native", 
++              "Chinese", "Japanese", 
++              "Other Asian or Pacific Islander", 
++              "Other race, nec", "Two major races", 
++              "Three or more major races"))]
+> 
+> setkey(d, YEAR, RACE, SEX, URBAN, FARM, STATEFIP)
+> 
+> out <- d[ , .(own=sum(PERWT*(OWNERSHP=="Owned or being bought (loan)"), na.rm=TRUE), 
++               free_and_clear=sum(PERWT*FREE_AND_CLEAR, na.rm=TRUE), 
++               group_n=sum(PERWT)), by=key(d)]
+> 
+> write.csv(out, "homeownership_by_race_sex_urban_farm.csv", row.names=FALSE)
+> 
+> proc.time()
+   user  system elapsed 
+ 66.459   3.245  70.130 
