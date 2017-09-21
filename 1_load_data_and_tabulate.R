@@ -1,11 +1,10 @@
 library(ripums)
-library(maps)
 library(tidyverse)
 
 
 # Parameters for testing --------------------------------------------------
 
-N_MAX <- 30000
+N_MAX <- Inf
 
 
 # Directories -------------------------------------------------------------

@@ -5,3 +5,4 @@
 original_data
 *.Rdata
 *.csv
+*.o*
